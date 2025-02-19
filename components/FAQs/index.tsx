@@ -1,82 +1,84 @@
-"use client";
-// import Plus from "@/assets/images/icons8-plus-24.png";
-// import Minus from "@/assets/images/icons8-minus-24.png";
-import { useState } from "react";
-import Image from "next/image";
-import { useTheme } from "next-themes";
+"use client"
 
-const items = [
+import { useState } from "react";
+import SectionTitle from "../Common/SectionTitle";
+
+const faqItems = [
   {
-    question: "What is OnboardFlow AI?",
-    answer:
-      "OnboardFlow AI is an AI-powered platform designed to automate and optimize customer onboarding, increasing activation rates and user retention effortlessly.",
+    question: "What exactly is OnboardFlow AI?",
+    answer: "OnboardFlow AI is an AI-driven SaaS solution that automates, personalizes, and optimizes the onboarding process for SaaS products, aiming to increase user retention and engagement."
   },
   {
-    question: "How does OnboardFlow AI improve customer onboarding?",
-    answer:
-      "OnboardFlow AI leverages AI-driven workflows, dynamic tutorials, and personalized onboarding sequences to guide users seamlessly through your product.",
+    question: "How does OnboardFlow AI personalize onboarding?",
+    answer: "By analyzing user behavior and data, OnboardFlow AI crafts unique onboarding paths for each user, ensuring relevance and increasing the likelihood of product adoption."
   },
   {
-    question: "Can I integrate OnboardFlow AI with my existing tools?",
-    answer:
-      "Absolutely! OnboardFlow AI integrates seamlessly with your CRM, helpdesk, and analytics platforms for a frictionless experience.",
+    question: "Can I integrate OnboardFlow AI with my existing systems?",
+    answer: "Yes, OnboardFlow AI is designed with seamless integration capabilities to work with your current tech stack, including CRM systems, analytics tools, and more."
   },
   {
-    question: "Who benefits the most from OnboardFlow AI?",
-    answer:
-      "SaaS businesses, product teams, and customer success managers looking to increase user engagement and retention through automated onboarding.",
+    question: "What kind of support does OnboardFlow AI offer?",
+    answer: "We provide email support for all plans, with priority and 24/7 support available in higher tiers. Higher plans also include a dedicated account manager."
   },
   {
-    question: "Can I fully customize the onboarding flows?",
-    answer:
-      "Yes! Create personalized, AI-powered onboarding journeys tailored to specific user behaviors and segments without any coding knowledge.",
+    question: "Is there a trial period for OnboardFlow AI?",
+    answer: "While there isn't a traditional free trial, by pre-ordering, you get lifetime access to core features at our early adopter pricing, which includes exclusive perks."
   },
   {
-    question: "Do I need technical skills to use OnboardFlow AI?",
-    answer:
-      "Not at all! OnboardFlow AI features a no-code drag-and-drop interface, making it accessible for teams of all backgrounds.",
-  },
-  {
-    question: "How do I get started?",
-    answer:
-      "Sign up for early access today and be among the first to revolutionize your onboarding process with AI-driven automation.",
-  },
+    question: "How does OnboardFlow AI help in reducing churn?",
+    answer: "By personalizing the user experience from the start, OnboardFlow AI reduces the friction users might encounter, thereby decreasing churn rates and improving customer satisfaction."
+  }
 ];
 
-const AccordionItem = ({ question, answer }: { question: string; answer: string }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const { theme } = useTheme();
-  const textColor = theme === "dark" ? "text-white" : "text-gray-900";
-  const borderColor = theme === "dark" ? "border-gray-700" : "border-gray-300";
-  
+const FAQSection = () => {
   return (
-    <div className={`py-4 border-b ${borderColor} cursor-pointer`} onClick={() => setIsOpen(!isOpen)}>
-      <div className="flex items-center justify-between">
-        <span className={`text-lg font-semibold ${textColor}`}>{question}</span>
-        <Image src={isOpen ? "➖": "➕" } alt={isOpen ? "Collapse" : "Expand"} className="w-4 h-4" />
-      </div>
-      {isOpen && <p className="mt-3 text-gray-600 dark:text-gray-400">{answer}</p>}
-    </div>
-  );
-};
-
-export const FAQs = () => {
-  const { theme } = useTheme();
-  const bgColor = theme === "dark" ? "bg-gray-900" : "bg-gray-100";
-  const headingColor = theme === "dark" ? "text-white" : "text-gray-900";
-  const subTextColor = theme === "dark" ? "text-gray-400" : "text-gray-700";
-  
-  return (
-    <div id="faq" className={`${bgColor} py-20 px-5`}>
-      <div className="container max-w-3xl mx-auto text-center">
-        <h2 className={`text-4xl font-bold ${headingColor}`}>Frequently Asked Questions</h2>
-        <p className={`mt-4 text-lg ${subTextColor}`}>Got questions? We have answers! Learn how OnboardFlow AI can revolutionize your customer onboarding experience.</p>
-        <div className="mt-12">
-          {items.map(({ question, answer }) => (
-            <AccordionItem question={question} answer={answer} key={question} />
+    <section id="faq" className="pt-16 md:pt-20 lg:pt-28">
+      <div className="container">
+        <SectionTitle
+          title="Frequently Asked Questions"
+          paragraph="Discover how OnboardFlow AI can revolutionize your onboarding process with these common questions and answers."
+          mb="44px"
+        />
+        
+        <div className="mb-16 md:mb-20 lg:mb-28">
+          {faqItems.map((item, index) => (
+            <Accordion key={index} question={item.question} answer={item.answer} />
           ))}
         </div>
       </div>
+    </section>
+  );
+};
+
+const Accordion = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="mb-4 border-b border-body-color/[.15] dark:border-white/[.15]">
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center justify-between w-full py-5 text-left"
+      >
+        <span className="text-xl font-bold text-body-color">{question}</span>
+        <span className="text-primary">
+          {isOpen ? (
+            <svg width="12" height="2" viewBox="0 0 12 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 1H1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          ) : (
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 1V11M1 6H11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          )}
+        </span>
+      </button>
+      {isOpen && 
+        <div className="py-5 text-base text-body-color">
+          <p>{answer}</p>
+        </div>
+      }
     </div>
   );
 };
+
+export default FAQSection;

@@ -7,12 +7,25 @@ import PricingBox from "./PricingBox";
 const Pricing = () => {
   const [isMonthly, setIsMonthly] = useState(false);
 
+  const pricingPlans = {
+    monthly: {
+      Starter: 79,
+      Growth: 199,
+      Enterprise: 499
+    },
+    yearly: {
+      Starter: 799,
+      Growth: 1999,
+      Enterprise: 4999
+    }
+  };
+
   return (
     <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
           title="Simple, Transparent Pricing"
-          paragraph="Choose the plan that fits your growth stage. With OnboardFlow AI, you get the power of personalized, AI-driven onboarding that boosts user retention and reduces support costs—at a price designed for early adopters."
+          paragraph="Select the plan that aligns with your growth goals. OnboardFlow AI offers AI-driven onboarding customization for user retention at unbeatable early adopter rates."
           center
           width="665px"
         />
@@ -52,49 +65,49 @@ const Pricing = () => {
                   : "pointer-events-none text-primary"
               } ml-4 cursor-pointer text-base font-semibold`}
             >
-              Yearly
+              Yearly(save 20%)
             </span>
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
           <PricingBox
-            packageName="Essential"
-            price={isMonthly ? "99" : "899"}
+            packageName="Starter"
+            price={(isMonthly ? pricingPlans.monthly.Starter : pricingPlans.yearly.Starter).toString()}
             duration={isMonthly ? "mo" : "yr"}
-            subtitle="Kickstart your onboarding with AI-driven workflows to boost initial user activation."
+            subtitle="Perfect for startups looking to optimize onboarding with AI essentials."
           >
-            <OfferList text="Onboarding Workflows" status="active" />
-            <OfferList text="Seamless Integrations" status="active" />
-            <OfferList text="Email & Chat Support" status="active" />
-            <OfferList text="Pre-Launch Exclusive Discount" status="active" />
-            <OfferList text="Early Adopter Bonus Content" status="inactive" />
-            <OfferList text="Advanced Analytics Dashboard" status="inactive" />
+            <OfferList text="AI-Driven Onboarding Paths" status="active" />
+            <OfferList text="Basic Analytics" status="active" />
+            <OfferList text="Email Support" status="active" />
+            <OfferList text="Single Project Support" status="active" />
+            <OfferList text="Custom Integrations" status="inactive" />
+            <OfferList text="Dedicated Account Manager" status="inactive" />
           </PricingBox>
           <PricingBox
-            packageName="Professional"
-            price={isMonthly ? "299" : "2,899"}
+            packageName="Growth"
+            price={(isMonthly ? pricingPlans.monthly.Growth : pricingPlans.yearly.Growth).toString()}
             duration={isMonthly ? "mo" : "yr"}
-            subtitle="Scale your onboarding with unlimited projects and advanced data insights & Reporting."
+            subtitle="For growing businesses needing advanced onboarding customization."
           >
-            <OfferList text="All Essential Features" status="active" />
-            <OfferList text="Unlimited Onboarding Projects" status="active" />
-            <OfferList text="Advanced Analytics & Reporting" status="active" />
-            <OfferList text="Dedicated Account Manager" status="active" />
-            <OfferList text="Lifetime Access to Core Features" status="active" />
-            <OfferList text="Priority Email Support" status="inactive" />
+            <OfferList text="All Starter Features" status="active" />
+            <OfferList text="Unlimited Projects" status="active" />
+            <OfferList text="Advanced Analytics" status="active" />
+            <OfferList text="Custom Integrations" status="active" />
+            <OfferList text="Priority Support" status="active" />
+            <OfferList text="Dedicated Account Manager" status="inactive" />
           </PricingBox>
           <PricingBox
-            packageName="Elite"
-            price={isMonthly ? "799" : "7,899"}
+            packageName="Enterprise"
+            price={(isMonthly ? pricingPlans.monthly.Enterprise : pricingPlans.yearly.Enterprise).toString()}
             duration={isMonthly ? "mo" : "yr"}
-            subtitle="Unlock full customization, premium integrations, and 24/7 priority support for maximum retention."
+            subtitle="Tailored for large teams requiring full-scale onboarding solutions."
           >
-            <OfferList text="AI-Driven Onboarding Suite" status="active" />
-            <OfferList text="Fully Customizable Workflows" status="active" />
-            <OfferList text="Premium Integrations & API Access" status="active" />
+            <OfferList text="All Growth Features" status="active" />
+            <OfferList text="AI Customization Suite" status="active" />
+            <OfferList text="Premium Integrations" status="active" />
             <OfferList text="24/7 Priority Support" status="active" />
-            <OfferList text="Lifetime Free Updates" status="active" />
+            <OfferList text="Dedicated Account Manager" status="active" />
             <OfferList text="Exclusive Early Adopter Perks" status="active" />
           </PricingBox>
         </div>

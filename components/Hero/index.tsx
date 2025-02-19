@@ -12,13 +12,13 @@ const Hero = () => {
             <div className="w-full px-4">
               <div className="mx-auto max-w-[800px] text-center">
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Accelerate Growth & Boost ROI with Intelligent Onboarding
+                  Accelerate Growth & Boost ROI with Intelligent Onboarding in Minutes
                 </h1>
                 <p className="mb-12 text-base font-medium leading-relaxed text-body-color dark:text-white dark:opacity-90 sm:text-lg md:text-xl">
                   Are you losing customers due to clunky onboarding? OnboardFlow
                   AI transforms your SaaS onboarding into a streamlined, fully
                   automated experience that reduces churn, enhances retention,
-                  and drive revenue growth—without any coding required.
+                  and drive revenue growth—without any coding required. 
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link
